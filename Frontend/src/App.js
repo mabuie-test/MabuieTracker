@@ -1,3 +1,5 @@
+// frontend/src/App.js
+import React, { useContext } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, AuthContext } from './contexts/AuthContext';
 import Login from './components/Login';
@@ -15,8 +17,22 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<PrivateRoute><VehicleList/></PrivateRoute>} />
-          <Route path="/map/:id" element={<PrivateRoute><VehicleMap/></PrivateRoute>} />
+          <Route 
+            path="/" 
+            element={
+              <PrivateRoute>
+                <VehicleList/>
+              </PrivateRoute>
+            } 
+          />
+          <Route 
+            path="/map/:id" 
+            element={
+              <PrivateRoute>
+                <VehicleMap/>
+              </PrivateRoute>
+            } 
+          />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
